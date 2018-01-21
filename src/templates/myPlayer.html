@@ -1,0 +1,149 @@
+<style>
+        span>a{font-size: 10px}
+       /*.widget{width: 900px;}
+       .medium{height:510px}*/
+        body{background-color: rgba(0,0,0,.075);}
+       .imgs{ width:24px;height:24px;}
+       th{text-align: center}
+       td{text-align: center}
+</style>
+<div class="row">
+       <a href="#">{{formData.name}}</a>
+       <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+               <h3>我的玩家</h3>
+               <hr/>
+               <!--  
+               <form class="form-inline">
+                    <div class="form-group">
+                    <div class="input-group">
+                       <input type="text" class="form-control" id="" placeholder="">
+                       </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 搜索
+                     </button>
+                    <button type="button" class="btn btn-success">
+                         <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> 刷新
+                     </button>
+               </form>
+               -->
+            
+                <!-- <form class="form-inline" style="margin-top:20px;">
+                    <div class="form-group">
+                          <label for="">团队人数</label>
+                          <input type="text" class="form-control" id="" placeholder="">
+                    </div>&nbsp;&nbsp;
+                     <div class="form-group">
+                          <label for="">总流水</label>
+                          <input type="email" class="form-control" id="" placeholder="">
+                    </div>&nbsp;&nbsp;
+                     <div class="form-group">
+                          <label for="">初始时间</label>
+                          <input type="email" class="form-control" id="" placeholder="">
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                         <label for="">截止时间</label>
+                         <input type="text" class="form-control" id="" placeholder="">
+                    </div>  
+                </form> -->
+               
+               <h4>信息列表</h4>
+               <rd-widget>
+               <rd-widget-body class="medium no-padding">
+               <div class="table-responsive">
+                   <table class="table table-striped">
+                       <thead>
+                       <tr>
+                           <th>玩家ID</th>
+                           <th>玩家昵称</th>
+                           <th>钻石数量</th>
+                           <th>元宝数量</th>
+                           <th>金币数量</th>
+                           <!-- <th>消费金额</th> -->
+                           <!-- <th>消费总额</th> -->
+                           <th>充值</th>
+                        </tr>
+                       </thead>
+                       <tbody>
+                            <tr ng-repeat="player in playerList">
+                                <td>{{player.userid}}</td>
+                                <td>{{player.name}}</td>
+                                <td>{{player.gems}}</td>
+                                <td>{{player.yuanbaos+player.yuanbaosbank}}</td>
+                                <td>{{player.coins+player.coinsbank}}</td>
+                                <!-- <td>消费金额</td> -->
+                                <!-- <td>消费总额</td> -->
+                                <td>
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalmpyb" ng-click="yuanBaos(player)">元宝</button>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalmpjb" ng-click="glodCoins(player)">金币</button>
+                                </td>
+                            </tr>
+                       </tbody>
+                   </table>
+               </div>
+               </rd-widget-body>
+               <rd-widget-footer>
+                <ul class="pagination pagination-sm pull-right">
+                    <li><a href="javascript:;" ng-click="Previous()">&laquo;</a></li>
+                    <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}"><a href="javascript:;" ng-click="selectPage(page)">{{page}}</a></li>
+                    <li><a href="javascript:;" ng-click="Next()">&raquo;</a></li>
+                </ul>
+                   <div class="clearfix"></div>
+               </rd-widget-footer>
+                   <rd-widget>
+       </div>
+</div>
+
+<!-- 代理给玩家充值元宝模态框 -->
+<div class="modal fade" id="myModalmpyb" tabindex="-1" role="dialog" aria-labelledby="myModalLabelmpyb">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabelmpyb" style="text-align:center;">充值</h4>
+             
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">元宝充值</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入元宝数量" ng-model="formData.ybValue">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" ng-click="addYuanbao(player.userid)">保存</button>
+            </div>
+          </div>
+        </div>
+</div>
+
+<!-- 代理给玩家充值金币模态框 -->
+<div class="modal fade" id="myModalmpjb" tabindex="-1" role="dialog" aria-labelledby="myModalLabelmpjb">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabelmpjb" style="text-align:center;">充值</h4>
+            
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">金币充值</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入金币数量"  ng-model="formData.jbValue">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" ng-click="addGoldCoin(player.userid)">保存</button>
+            </div>
+          </div>
+        </div>
+</div>

@@ -1,0 +1,239 @@
+<style>
+    body {
+        background-color: rgba(0, 0, 0, .075);
+        font-family: none;
+    }
+
+    .col-r {
+        color: red
+    }
+
+    .col-b {
+        color: blue
+    }
+
+    .col-g {
+        color: green
+    }
+
+    .col-y {
+        color: sandybrown
+    }
+
+    th,
+    td {
+        text-align: center
+    }
+
+    li {
+        list-style: none;
+        margin-top: 20px
+    }
+
+    .imgs {
+        width: 24px;
+        height: 24px;
+    }
+
+    .selected {
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+<div class="row">
+    <a href="#">{{formData.name}}</a>
+    <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+        <h3>我的团队</h3>
+        <hr/>
+        <h4>信息列表</h4>
+        <rd-widget>
+            <rd-widget-body class="medium no-padding">
+                <div class="table-responsive">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" data-target="#A" class="selected">我的团队</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" data-target="#B" class="selected">添加代理</a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+
+                        <div class="tab-pane fade in active" id="A" style="margin-top:20px;">
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>玩家ID</th>
+                                        <th>代理名称</th>
+                                        <th>代理金币数量</th>
+                                        <th>代理元宝数量</th>
+                                        <th>抽水时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="member in membersList">
+                                        <td>{{member.userID}}</td>
+                                        <td>{{member.agency_userName}}</td>
+                                        <td>{{member.agencys_commission_coins}}</td>
+                                        <td>{{member.agencys_commission_gamegold}}</td>
+                                        <td>{{timeFormat(member.ordersTime)}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <ul class="pagination pagination-sm pull-right">
+                                <li>
+                                    <a href="javascript:;" ng-click="Previous()">&laquo;</a>
+                                </li>
+                                <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}">
+                                    <a href="javascript:;" ng-click="selectPage(page)">{{page}}</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" ng-click="Next()">&raquo;</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="B" style="margin-top:20px;">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="" placeholder="" ng-model="formData.userName">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" ng-click="searchAgency()">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 搜索
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addmyModal">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加代理
+                                </button>
+                                <!-- <button type="button" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> 刷新
+                                </button> -->
+                            </form>
+                          
+                            <table class="table table-striped" style="margin-top:10px;">
+                                <thead>
+                                    <tr>
+                                        <th>代理ID</th>
+                                        <th>真实姓名</th>
+                                        <th>用户名</th>
+                                        <th>联系方式</th>
+                                        <th>账户余额</th>
+                                        <th>金币</th>
+                                        <th>钻石</th>
+                                        <th>元宝</th>
+                                        <th>金币折扣</th>
+                                        <th>钻石折扣</th>
+                                        <th>元宝折扣</th>
+                                        <th>创建时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{others.agencyID}}</td>
+                                        <td>{{others.realname}}</td>
+                                        <td>{{others.userName}}</td>
+                                        <td>{{others.contactway}}</td>
+                                        <td>{{others.accountbalance}}</td>
+                                        <td>{{others.coins}}</td>
+                                        <td>{{others.gams}}</td>
+                                        <td>{{others.gamegold}}</td>
+                                        <td>{{others.coinsdiscount}}</td>
+                                        <td>{{others.gamsdiscount}}</td>
+                                        <td>{{others.gamegolddiscount}}</td>
+                                        <td>{{timeFormat(others.createTime)}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- <ul class="pagination pagination-sm pull-right">
+                                <li>
+                                    <a href="javascript:;" ng-click="Previous()">&laquo;</a>
+                                </li>
+                                <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}">
+                                    <a href="javascript:;" ng-click="selectPage(page)">{{page}}</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" ng-click="Next()">&raquo;</a>
+                                </li>
+                            </ul> -->
+                        </div>
+                    </div>
+
+                </div>
+            </rd-widget-body>
+            <!-- <rd-widget-footer>
+               <div class="clearfix"></div>
+            </rd-widget-footer> -->
+            <rd-widget>
+    </div>
+</div>
+
+
+
+<!-- 添加代理页面模态框 -->
+<div class="modal fade" id="addmyModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="addModalLabel" style="text-align:center;">添加代理</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入用户名" ng-model="formData.names">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入密码" ng-model="formData.password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">真实姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入真实姓名" ng-model="formData.realname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">联系方式</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入手机号码" ng-model="formData.contactway">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">金币折扣</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入金币折扣" ng-model="formData.coinsdiscount">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">元宝折扣</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入元宝折扣" ng-model="formData.gamegolddiscount">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">钻石折扣</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入钻石折扣" ng-model="formData.gamsdiscount">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="addAgency()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>

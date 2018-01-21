@@ -1,0 +1,21 @@
+<style>
+    /* h3{text-align:center;background-color: #5bc0de;} */
+    .bg{width: 100%;height:auto; background-color: white}
+    li{list-style: none;margin-top: 20px}
+    body{background-color: rgba(0,0,0,.075);}
+</style>
+<div class="row">
+    <a href="#">{{formData.name}}</a>
+   <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+        <h3>编辑公告</h3>
+        <rd-widget>
+        <rd-widget-body class="medium no-padding">
+        <div class="table-responsive">
+             <!-- <label for="exampleInputName2">编辑公告</label>   -->
+             <textarea class="form-control" rows="3" placeholder="请输入内容" style="resize:none" ng-model="view.str"></textarea>
+             <button type="submit" class="btn btn-success" style="margin-top:10px" ng-click="setMessage()">保存</button>
+        </div>
+        </rd-widget-body>
+       <rd-widget>
+    </rd-widget></rd-widget></div>
+</div>

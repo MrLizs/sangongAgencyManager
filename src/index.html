@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" ng-app="RDash">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>三公王代理后台</title>
+  <!-- STYLES -->
+
+  <!-- build:css lib/css/main.min.css -->
+  <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="components/rdash-ui/dist/css/rdash.min.css">
+  <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap-datetimepicker.min.css">
+  
+  <!-- endbuild -->
+  <!-- SCRIPTS -->
+  <!-- build:js lib/js/main.min.js -->
+  <script type="text/javascript" src="components/jquery/dist/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="components/bootstrap/dist/js/bootstrap.js"></script>
+  <script type="text/javascript" src="components/bootstrap/dist/js/bootstrap-datetimepicker.min.js"></script>
+
+  <script type="text/javascript" src="components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script type="text/javascript" src="components/angular-cookies/angular-cookies.min.js"></script>
+  <script type="text/javascript" src="components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="components/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+  <!-- for no html5 browsers support -->
+  <script type="text/javascript" src="components/ng-file-upload/dist/ng-file-upload.min.js"></script>
+  <!-- endbuild -->
+  <!-- Custom Scripts -->
+  <script type="text/javascript" src="js/dashboard.min.js"></script>
+  <style>
+    .sidebar li {
+      margin-top: 0px
+    }
+    .left-size{
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body ng-controller="MasterCtrl">
+  <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak ng-if="formData.isLogined">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar">
+        <li class="sidebar-main">
+          <a ng-click="toggleSidebar()">
+            代理后台系统
+            <span class="menu-icon glyphicon glyphicon-transfer"></span>
+          </a>
+        </li>
+        <li class="sidebar-title">
+          <span>NAVIGATION</span>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/dashboard">首页
+            <span class="menu-icon fa fa-tachometer"></span>
+          </a>
+        </li>
+             
+        <!-- 代理后台 -->
+        <!-- <li class="sidebar-title">
+          <span class="left-size">代理后台</span>
+        </li> -->        
+        <li class="sidebar-list">
+          <a href="#/myTeam">我的团队
+            <span class="menu-icon fa fa-users"></span>
+          </a>
+        </li>
+
+        <li class="sidebar-list">
+          <a href="#/myPlayer">我的玩家
+            <span class="menu-icon fa fa-user-plus"></span>
+          </a>
+        </li>
+
+        <li class="sidebar-list">
+          <a href="#/myInformation">我的信息
+            <span class="menu-icon fa fa-paw"></span>
+          </a>
+        </li>
+
+        <li class="sidebar-list">
+          <a href="#/withdraw">提现记录
+            <span class="menu-icon fa fa-credit-card"></span>
+          </a>
+        </li>
+        
+      </ul>
+
+
+      <!--<div class="sidebar-footer">
+        <div class="col-xs-4">
+          <a href="https://github.com/rdash/rdash-angular" target="_blank">
+            Github
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="https://github.com/rdash/rdash-angular/blob/master/README.md" target="_blank">
+            About
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#">
+            Support
+          </a>
+        </div>
+      </div>-->
+    </div>
+    <!-- End Sidebar -->
+
+    <div id="content-wrapper">
+      <div class="page-content">
+
+        <!-- Header Bar -->
+        <div class="row header">
+          <div class="col-xs-12">
+            <div class="user pull-right">
+              <div class="item dropdown" uib-dropdown>
+                <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
+                  <img src="img/avatar.jpg">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li class="dropdown-header">
+                    {{userName}}
+                  </li>
+                  <li class="divider"></li>
+                  <!-- <li class="link">
+                    <a href="#">
+                      Profile
+                    </a>
+                  </li> -->
+                  <!-- <li class="link">
+                    <a href="#">
+                      创建管理员
+                    </a>
+                  </li> -->
+                  <li class="link">
+                    <a href="#" ng-click="">
+                      代理登陆
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li class="link">
+                    <a href="#" ng-click="logout()">
+                      代理登出
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="item dropdown" uib-dropdown>
+                <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
+                  <i class="fa fa-bell-o"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li class="dropdown-header">
+                    Notifications
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#">Server Down!</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="meta">
+              <div class="page">
+                {{frame.pageTitle}}
+              </div>
+              <div class="breadcrumb-links">
+                Home / {{frame.pageTitle}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Header Bar -->
+
+        <!-- Main Content -->
+        <div ui-view></div>
+
+      </div>
+      <!-- End Page Content -->
+    </div>
+    <!-- End Content Wrapper -->
+  </div>
+  <!-- End Page Wrapper -->
+  <div ng-if="!formData.isLogined">
+    <div ui-view></div>
+  </div>
+</body>
+
+</html>

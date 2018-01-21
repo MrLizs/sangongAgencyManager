@@ -1,0 +1,218 @@
+<style>
+	body {
+		background-color: rgba(0, 0, 0, .075);
+	}
+</style>
+<div class="row alerts-container" data-ng-controller="AlertsCtrl" data-ng-show="alerts.length">
+	<div class="col-xs-12">
+		<uib-alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+	</div>
+</div>
+
+<div class="row">
+	<a href="#">{{formData.name}}</a>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon green pull-left">
+					<i class="fa fa-users"></i>
+				</div>
+				<div class="title"></div>
+				<div class="comment">玩家人数</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon red pull-left">
+					<i class="fa fa-tasks"></i>
+				</div>
+				<div class="title"></div>
+				<div class="comment">代理人数</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon orange pull-left">
+					<i class="fa fa-sitemap"></i>
+				</div>
+				<div class="title"></div>
+				<div class="comment">总上分</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon blue pull-left">
+					<i class="fa fa-support"></i>
+				</div>
+				<div class="title"></div>
+				<div class="comment">总下分</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>
+
+<!-- 
+<div class="row">
+	<div class="col-lg-6">
+		<rd-widget>
+      		<rd-widget-header icon="fa-tasks" title="开奖信息">
+      		</rd-widget-header>
+      		<rd-widget-body classes="medium no-padding">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+						<tr>
+							<td>序号</td>
+							<td>期号</td>
+							<td>号码</td>
+							<td>单双</td>
+							<td>开奖时间</td>
+						</tr>
+						</thead>
+						<tbody>
+							<tr><td>1</td><td>201712003</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>2</td><td>201712004</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>3</td><td>201712005</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>4</td><td>201712006</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>5</td><td>201712007</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>6</td><td>201712008</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>7</td><td>201712009</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>8</td><td>201712010</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>9</td><td>201712011</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>10</td><td>201712012</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+							<tr><td>11</td><td>201712013</td><td>03 12 22 15 25</td><td>单3/双2</td><td>2017-12-7-13:05:00</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</rd-widget-body>
+			<rd-widget-footer>
+				<ul class="pagination pagination-sm pull-right">
+					<li><a href="#">&laquo;</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">&raquo;</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</rd-widget-footer>
+		</rd-widget>
+	</div>
+	<div class="col-lg-6">
+		<rd-widget>
+			<rd-widget-header icon="fa-users" title="在线用户">
+				<input type="text" placeholder="Search" class="form-control input-sm" />
+			</rd-widget-header>
+			<rd-widget-body classes="medium no-padding">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr><th class="text-center">初始分</th><th>剩余分</th><th>上分</th><th>下分</th><th>上下分</th><th>流水</th><th>得分</th><th>抽水</th></tr>
+						</thead>
+						<tbody>
+							<tr><td class="text-center">8045</td><td>746773</td><td>150000</td><td>50000</td><td>100000</td><td>120000</td><td>20000</td><td>5412</td></tr>
+						</tbody>
+					</table>
+        		</div>
+			</rd-widget-body>
+			<rd-widget-footer>
+				<ul class="pagination pagination-sm pull-right">
+					<li><a href="#">&laquo;</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">&raquo;</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</rd-widget-footer>
+		<rd-widget>
+	</div>
+</div>
+ -->
+
+<!--  
+<div class="row">
+	<div class="col-lg-6">
+   		<rd-widget>
+   			<rd-widget-header icon="fa-plus" title="Extras">
+   				<button class="btn btn-sm btn-info">Button</button>
+   			</rd-widget-header>
+   			<rd-widget-body>
+				<div class="message">
+					This is a standard message which will also work the ".no-padding" class, I can also <span class="error">be an error message!</span>
+				</div>
+				<hr />
+				<div class="message">
+					<a href="http://angular-ui.github.io/bootstrap/" target="_blank">UI Bootstrap</a> is included, so you can use <a href="#" tooltip="I'm a tooltip!">tooltips</a> and all of the other native Bootstrap JS components!
+				</div>
+   			</rd-widget-body>
+   		</rd-widget>
+	</div>
+	<div class="col-lg-6">
+		<rd-widget>
+			<rd-widget-header icon="fa-cog fa-spin" title="Loading Directive">
+				<a href="http://tobiasahlin.com/spinkit/" target="_blank">SpinKit</a>
+			</rd-widget-header>
+			<rd-widget-body>
+				<rd-loading></rd-loading>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-12">
+		<rd-widget>
+			<rd-widget-header icon="fa-plus" title="下注信息">
+				<button class="btn btn-sm btn-info">刷新</button>
+			</rd-widget-header>
+			<rd-widget-body classes="medium no-padding">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+						<tr>
+							<td>序号</td>
+							<td>期号</td>
+							<td>号码</td>
+							<td>昵称</td>
+							<td>金额</td>
+							<td>下注</td>
+							<td>初始分</td>
+							<td>剩余分</td>
+							<td>抽水</td>
+							<td>下注时间</td>
+						</tr>
+						</thead>
+						<tbody>
+						<tr><td>1</td><td>201712003</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>2</td><td>201712004</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>3</td><td>201712005</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>4</td><td>201712006</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>5</td><td>201712007</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>6</td><td>201712008</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>7</td><td>201712009</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>8</td><td>201712010</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>9</td><td>201712011</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>10</td><td>201712012</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						<tr><td>11</td><td>201712013</td><td>03 12 22 15 25</td><td>wwwlll</td><td>30.00</td><td>xxx</td><td>1212</td><td>21212</td><td>2212</td><td>2017-12-7-13:05:00</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</rd-widget-body>
+			<rd-widget-footer>
+				<ul class="pagination pagination-sm pull-right">
+					<li><a href="#">&laquo;</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">&raquo;</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</rd-widget-footer>
+		</rd-widget>
+	</div>
+	
+</div>
+-->

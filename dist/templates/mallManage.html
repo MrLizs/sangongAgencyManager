@@ -1,0 +1,57 @@
+<style>
+    body {
+        background-color: rgba(0,0,0,.075);
+         font-family: none;
+    }
+   
+    th,td{text-align: center}
+</style>
+    <div class="row">
+            <a href="#">{{formData.name}}</a>
+            <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+                <h3>商城管理</h3>
+                <hr>
+                <h4>信息列表</h4>
+                <rd-widget>
+                    <rd-widget-body class="medium no-padding">
+                        <div class="table-responsive">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="">道具种类</label>&nbsp;
+                                    <select class="form-control" ng-model="view.type">
+                                        <option ng-value="0">元宝</option>
+                                        <option ng-value="1">钻石</option>
+                                        <option ng-value="2">钻石换金币</option>
+                                    </select>&nbsp;&nbsp;&nbsp;
+                                    <label for="">道具</label>&nbsp;
+                                    <select class="form-control" ng-model="view.index">
+                                        <option ng-value="0">道具1</option>
+                                        <option ng-value="1">道具2</option>
+                                        <option ng-value="2">道具3</option>
+                                        <option ng-value="3">道具4</option>
+                                        <option ng-value="4">道具5</option>
+                                        <option ng-value="5">道具6</option>
+                                    </select>
+                                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="form-group">
+                                    <label for="nums">数量</label>
+                                    <input type="text" class="form-control" id="nums" placeholder="数量" ng-model="view.value" autocomplete="off">
+                                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="form-group">
+                                    <label for="price">购买价格</label>
+                                    <input type="text" class="form-control" id="price" placeholder="价格" ng-model="view.price" autocomplete="off">
+                                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                            </form>
+                            <button type="submit" class="btn btn-success" style="margin-top:5px" ng-click="setShopList()">保存</button>
+                           
+                        </div>
+                    </rd-widget-body>
+                    <rd-widget-footer>
+                       
+                        <div class="clearfix"></div>
+                    </rd-widget-footer>
+                    <rd-widget>
+       </rd-widget></rd-widget></div>
+</div>
+
+

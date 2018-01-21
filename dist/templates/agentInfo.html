@@ -1,0 +1,262 @@
+<style>
+    span>a {
+        font-size: 10px
+    }
+
+    /*.widget{width: 900px;}
+    .medium{height:510px}*/
+
+    body {
+        background-color: rgba(0, 0, 0, .075);
+    }
+
+    .imgs {
+        width: 24px;
+        height: 24px;
+    }
+
+    th {
+        text-align: center
+    }
+
+    td {
+        text-align: center
+    }
+</style>
+<div class="row">
+    <a href="#">{{formData.name}}</a>
+    <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+        <h3>代理信息 </h3>
+        <hr>
+        <form class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="" placeholder="" ng-model="formData.username">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="searchAgent()">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查询
+            </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addmyModal"> 
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加代理
+            </button>
+        </form>
+       
+        <h4>信息列表</h4>
+        <rd-widget>
+            <rd-widget-body class="medium no-padding">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>代理ID</th>
+                                <th>真实姓名</th>
+                                <th>用户名</th>
+                                <th>联系方式</th>
+                                <th>账户余额</th>
+                                <!-- <th>游戏ID</th> -->
+                                <th>金币</th>
+                                <th>钻石</th>
+                                <th>元宝</th>
+                                <th>金币折扣</th>
+                                <th>钻石折扣</th>
+                                <th>元宝折扣</th>
+                                <th>冻结账户操作</th>
+                                <th>充值</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in users track by $index">
+                                <td>{{user.agencyID}}</td>
+                                <td>{{user.realname}}</td>
+                                <td>{{user.userName}}</td>
+                                <td>{{user.contactway}}</td>
+                                <td>{{user.accountbalance}}</td>
+                                <!-- <td>游戏ID</td> -->
+                                <td>{{user.coins}}</td>
+                                <td>{{user.gams}}</td>
+                                <td>{{user.gamegold}}</td>
+                                <td>{{user.coinsdiscount}}</td>
+                                <td>{{user.gamsdiscount}}</td>
+                                <td>{{user.gamegolddiscount}}</td>
+                                <!-- <td>{{user.lock.data[0]}}</td> -->
+                                <td>
+                                    <input type="button" class="btn btn-danger" value="冻结" ng-disabled="{{user.accountlock.data[0]?1:0}}" ng-click="lock(user.userName,user.accountlock)">
+                                    <input type="button" class="btn btn-success" value="解冻" ng-disabled="{{user.accountlock.data[0]?0:1}}" ng-click="unLock(user.userName,user.accountlock)">
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jbmyModal" ng-click="valueJB(user)">金币</button>
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#zsmyModal" ng-click="valueZS(user)">钻石</button>
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ybmyModal" ng-click="valueYB(user)">元宝</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </rd-widget-body>
+            <rd-widget-footer>
+                <ul class="pagination pagination-sm pull-right">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li>
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </rd-widget-footer>
+            <rd-widget>
+    </rd-widget></rd-widget></div>
+</div>
+
+<!-- 添加代理模态框 -->
+<div class="modal fade" id="addmyModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="addModalLabel" style="text-align:center">添加代理</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="" placeholder="请输入用户名" ng-model="formData.names">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="" placeholder="请输入密码" ng-model="formData.password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">真实姓名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="" placeholder="请输入真实姓名" ng-model="formData.realname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">联系方式</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="" placeholder="请输入手机号码" ng-model="formData.contactway">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">金币折扣</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="" placeholder="请输入金币折扣" ng-model="formData.coinsdiscount">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">元宝折扣</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="" placeholder="请输入元宝折扣" ng-model="formData.gamegolddiscount">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">钻石折扣</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="" placeholder="请输入钻石折扣" ng-model="formData.gamsdiscount">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary" ng-click="addAgency()">保存</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- 金币充值模态框 -->
+<div class="modal fade" id="jbmyModal" tabindex="-1" role="dialog" aria-labelledby="jbmyModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="jbmyModalLabel" style="text-align:center">充值</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">金币充值</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入金币数量" ng-model="formData.value">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" ng-click="addCoins(user.userName)">保存</button>
+            </div>
+          </div>
+        </div>
+</div>
+
+<!-- 钻石充值模态框 -->
+<div class="modal fade" id="zsmyModal" tabindex="-1" role="dialog" aria-labelledby="zsmyModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="zsmyModalLabel" style="text-align:center">充值</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">钻石充值</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入钻石数量" ng-model="formData.value">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" ng-click="addGems(user.userName)">保存</button>
+            </div>
+          </div>
+        </div>
+</div>
+
+<!-- 元宝充值模态框 -->
+<div class="modal fade" id="ybmyModal" tabindex="-1" role="dialog" aria-labelledby="ybmyModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="ybmyModalLabel" style="text-align:center">充值</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">元宝充值</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入元宝数量" ng-model="formData.value">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" ng-click="addYuanBao(user.userName)">保存</button>
+            </div>
+          </div>
+        </div>
+</div>

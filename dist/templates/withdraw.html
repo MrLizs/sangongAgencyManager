@@ -1,0 +1,53 @@
+<style>
+    body {
+        background-color: rgba(0, 0, 0, .075);
+    }
+    th{text-align: center;}
+    td{text-align: center;}
+    .coms{color:#337ab7;font-size:15px;}
+    .comCor{color:#333;}
+</style>
+<div class="row">
+    <a href="#">{{formData.name}}</a>
+    <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+        <h3>提现记录</h3>
+        <hr>
+        <h4>信息列表</h4>
+        <rd-widget>
+            <rd-widget-body class="medium no-padding">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><th>提现用户</th>
+                                <th>订单单号</th>
+                                <th>发起时间</th>
+                                <th>完成时间</th>
+                                <th>提现金额</th>
+                                <th>提现状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr ng-repeat="order in ordersList">
+                                <td>{{order.userName}}</td>
+                                <td>{{order.ordersID}}</td>
+                                <td>{{timeFormat(order.startTime)}}</td>
+                                <td>{{timeFormat(order.endTime)}}</td>
+                                <td>{{order.money}}</td>
+                                <td>{{order.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+               
+                </div>
+            </rd-widget-body>
+                <rd-widget-footer>
+                    <ul class="pagination pagination-sm pull-right">
+                        <li><a href="javascript:;" ng-click="Previous()">&laquo;</a></li>
+                        <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}"><a href="javascript:;" ng-click="selectPage(page)">{{page}}</a></li>
+                        <li><a href="javascript:;" ng-click="Next()">&raquo;</a></li>
+                    </ul>
+                     <div class="clearfix"></div>
+                </rd-widget-footer> 
+            <rd-widget>
+    </rd-widget></rd-widget></div>
+</div>

@@ -1,0 +1,76 @@
+<style>
+        span>a{font-size: 10px}
+       /*.widget{width: 900px;}
+       .medium{height:510px}*/
+        body{background-color: rgba(0,0,0,.075);}
+       .imgs{ width:24px;height:24px;}
+       th{text-align: center}
+       td{text-align: center}
+    </style>
+    <div class="row">
+       <a href="#">{{formData.name}}</a>
+       <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+               <h3>下属玩家</h3>
+               <hr>
+              
+               <form class="form-inline">
+                   <div class="form-group">
+                   <div class="input-group">
+                      <input type="text" class="form-control" id="" placeholder="">
+                      </div>
+                   </div>
+                   <button type="submit" class="btn btn-primary">搜索</button>
+                   <button type="button" class="btn btn-info">刷新</button>
+                 </form>
+               <h4>信息列表</h4>
+               <rd-widget>
+               <rd-widget-body class="medium no-padding">
+               <div class="table-responsive">
+                   <table class="table table-striped">
+                       <thead>
+                       <tr>
+                           <th>id</th>
+                           <th>昵称</th>
+                           <th>在线情况</th>
+                           <th>金币数量</th>
+                           <th>金币数量</th>
+                           <th>钻石数量</th>
+                           <th>元宝数量</th>
+                           <th>操作(充值)</th>
+                           <th>数量输入</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       <tr>
+                           <td>100</td>
+                           <td>玩玩玩</td>
+                           <td>30</td>
+                           <td>60</td>
+                           <td>80</td>
+                           <td>
+                               <button type="button" class="btn btn-info">钻石</button>
+                               <button type="button" class="btn btn-info">元宝</button>
+                               <button type="button" class="btn btn-info">金币</button>
+                           </td>
+                           <td>
+                                <input type="text" placeholder="请输入数量">
+                                <button type="button" class="btn btn-primary">确定</button>
+                           </td>
+                       </tr>
+    
+                       </tbody>
+                   </table>
+               </div>
+               </rd-widget-body>
+               <rd-widget-footer>
+                   <!--               
+                   <ul class="pagination pagination-sm pull-right">
+                       <li><a href="javascript:;" ng-click="Previous()">&laquo;</a></li>
+                       <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}"><a href="javascript:;" ng-click="selectPage(page)">{{page}}</a></li>
+                       <li><a href="javascript:;" ng-click="Next()">&raquo;</a></li>
+                   </ul> -->
+                   <div class="clearfix"></div>
+               </rd-widget-footer>
+                   <rd-widget>
+       </rd-widget></rd-widget></div>
+    </div>

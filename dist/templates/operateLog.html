@@ -1,0 +1,65 @@
+<style>
+        span>a{font-size: 10px}
+        body{background-color: rgba(0,0,0,.075);}
+       .imgs{ width:24px;height:24px;}
+       th{text-align: center}
+       td{text-align: center}
+       .icon{
+            left:298px;
+            top:5px;
+            position: absolute;
+        }
+    
+    </style>
+    <div class="row">
+       <a href="#">{{formData.name}}</a>
+       <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+               <h3>操作日志 </h3>
+               <hr>
+              <form class="form-inline">
+                   <div class="form-group">
+                   <div class="input-group">
+                      <input type="text" class="form-control" id="" ng-model="formData.userid">
+                      </div>
+                   </div>
+                   <button type="submit" class="btn btn-primary" ng-click="searchInfo()">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查询
+                   </button>
+               </form>
+                 
+              <h4>信息列表</h4>
+               <rd-widget>
+               <rd-widget-body class="medium no-padding">
+               <div class="table-responsive">
+                   <table class="table table-striped">
+                       <thead>
+                       <tr>
+                           <th>时间</th>
+                           <th>操作</th>
+                           <th>对象</th>
+                           <th>内容</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       <tr ng-repeat="msg in agentList">
+                           <td>{{timeFormat(msg.addtime)}}</td>  
+                           <td>{{msg.ControlType}}</td>
+                           <td>{{msg.objectID}}</td>
+                           <td>{{msg.ControlValue}}</td>
+                        </tr>
+                     </tbody>
+                   </table>
+               </div>
+               </rd-widget-body>
+               <rd-widget-footer>
+                <ul class="pagination pagination-sm pull-right">
+                    <li><a href="javascript:;" ng-click="Previous()">&laquo;</a></li>
+                    <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}"><a href="javascript:;" ng-click="selectPage(page)">{{page}}</a></li>
+                    <li><a href="javascript:;" ng-click="Next()">&raquo;</a></li>
+                </ul>
+                   <div class="clearfix"></div>
+               </rd-widget-footer>
+                   <rd-widget>
+       </rd-widget></rd-widget></div>
+    </div>
+    

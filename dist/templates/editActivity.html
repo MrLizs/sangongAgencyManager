@@ -1,0 +1,271 @@
+<style>
+    span>a{font-size: 10px}
+   /*.widget{width: 900px;}
+   .medium{height:510px}*/
+    body{background-color: rgba(0,0,0,.075);}
+   .imgs{ width:24px;height:24px;}
+   th{text-align: center}
+   td{text-align: center}
+</style>
+<div class="row">
+   <a href="#">{{formData.name}}</a>
+   <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+           <h3>编辑活动</h3>
+           <!-- <hr/> -->
+           <rd-widget>
+           <rd-widget-body class="medium no-padding">
+           <div class="table-responsive">
+            <div style="margin-bottom:5px">
+              <label for="">救济金开关</label>&nbsp;&nbsp;&nbsp;&nbsp;
+             
+              <label class="checkbox-inline">
+                  <input type="checkbox" id="Checkbox1" ng-checked="view.enabled" ng-model="view.enabled">开
+              </label>
+              
+            </div>
+            <div>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="balance">领取救济金金额</label>
+                    <input type="text" class="form-control" id="balance" placeholder="金额" ng-model="view.limitCoins">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <label for="lowLimit">领取的金币下限</label>
+                    <input type="text" class="form-control" id="lowLimit" placeholder="金币下限" ng-model="view.limitTime">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <label for="">救济金次数</label>
+                    <input type="text" class="form-control" id="" placeholder="救济金次数" ng-model="view.maxCount">
+                </div>&nbsp;&nbsp;&nbsp;
+            </form>
+            
+            <form class="form-inline" style="margin-top:5px">
+              <label for="">救济物品</label>&nbsp;&nbsp;&nbsp;
+              <div class="form-group">
+                    <label for="">钻石</label>
+                    <input type="text" class="form-control" id="" placeholder="" ng-model="gifts.gems">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <label for="">元宝</label>
+                    <input type="text" class="form-control" id="" placeholder="" ng-model="gifts.yuanbaos">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <label for="">金币</label>
+                    <input type="text" class="form-control" id="" placeholder="" ng-model="gifts.coins">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+            </form>
+                
+            <button type="submit" class="btn btn-success" style="margin-top:5px" ng-click="setJiuJiJin()">保存</button>
+            </div>
+           
+            <hr>
+
+            <div style="margin-bottom:5px">
+                <label for="">转盘开关</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                
+              <label class="checkbox-inline">
+                  <input type="checkbox" id="Checkbox3" ng-checked="info.enabled" ng-model="info.enabled">开
+              </label>
+              
+            </div>
+
+            <form class="form-inline" style="margin-top:5px">
+                <label for="">道具价格</label>&nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                      <label for="">钻石</label>
+                      <input type="text" class="form-control" id="" placeholder="" ng-model="info.price.gems">
+                  </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="form-group">
+                      <label for="">元宝</label>
+                      <input type="text" class="form-control" id="" placeholder="" ng-model="info.price.yuanbaos">
+                  </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="form-group">
+                      <label for="">金币</label>
+                      <input type="text" class="form-control" id="" placeholder="" ng-model="info.price.coins">
+                  </div>&nbsp;&nbsp;&nbsp;&nbsp;
+              </form>
+            
+            <label for="exampleInputName2">奖励道具设置</label>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="">道具1</label>&nbsp;&nbsp;
+                    <label for="">抽水</label>&nbsp;
+                    <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[0].rate">
+                    <label for="">钻石</label>&nbsp;
+                    <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[0].gems">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <label for="">道具2</label>&nbsp;&nbsp;
+                    <label for="">抽水</label>&nbsp;
+                    <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[1].rate">
+                    <label for="">金币</label>&nbsp;
+                    <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[1].coins">
+                </div>
+            </form>
+
+            <form class="form-inline" style="margin-top:5px">
+                    <div class="form-group">
+                            <label for="">道具3</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[2].rate">
+                            <label for="">元宝</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[2].yuanbaos">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="">道具4</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[3].rate">
+                            <label for="">钻石</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[3].gems">
+                        </div>
+            </form>
+
+            <form class="form-inline" style="margin-top:5px">
+                    <div class="form-group">
+                            <label for="">道具5</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[4].rate">
+                            <label for="">元宝</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[4].yuanbaos">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="">道具6</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[5].rate">
+                            <label for="">金币</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[5].coins">
+                        </div>
+            </form>
+
+            <form class="form-inline" style="margin-top:5px">
+                    <div class="form-group">
+                            <label for="">道具7</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[6].rate">
+                            <label for="">钻石</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[6].gems">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="">道具8</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[7].rate">
+                            <label for="">元宝</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[7].yuanbaos">
+                        </div>
+            </form>
+
+            <form class="form-inline" style="margin-top:5px">
+                    <div class="form-group">
+                            <label for="">道具9</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[8].rate">
+                            <label for="">金币</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[8].coins">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="">道具10</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[9].rate">
+                            <label for="">钻石</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[9].gems">
+                        </div>
+            </form>
+
+            <form class="form-inline" style="margin-top:5px">
+                    <div class="form-group">
+                            <label for="">道具11</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[10].rate">
+                            <label for="">元宝</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[10].yuanbaos">
+                        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="">道具12</label>&nbsp;&nbsp;
+                            <label for="">抽水</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="抽水" ng-model="daoJus[11].rate">
+                            <label for="">金币</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="gifts[11].coins">
+                        </div>
+            </form>
+            <button type="submit" class="btn btn-success" style="margin-top:5px" ng-click="setChouJiang()">保存</button>
+            <hr>
+
+                    <div style="margin-bottom:5px">
+                        <label for="">签到开关</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="Checkbox5" ng-checked="sign.enabled" ng-model="sign.enabled">开
+                        </label>
+                       
+                    </div>
+
+
+                     <label for="exampleInputName2">签到奖励设置</label>
+                     <form class="form-inline">
+                        <div class="form-group">
+                          <label for="">第一天</label>&nbsp;&nbsp;
+                          <label for="">道具1</label>&nbsp;&nbsp;
+                          <label for="">金币</label>&nbsp;&nbsp;
+                          <input type="text" class="form-control" id="" placeholder="数量" ng-model="sign.gifts[0].coins">
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="">第二天</label>&nbsp;&nbsp;
+                            <label for="">道具2</label>&nbsp;&nbsp;
+                            <label for="">金币</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="sign.gifts[1].coins">
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="">第三天</label>&nbsp;&nbsp;
+                            <label for="">道具3</label>&nbsp;&nbsp;
+                            <label for="">金币</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="sign.gifts[2].coins">
+                        </div>
+                      </form>
+                      <form class="form-inline" style="margin-top:5px">
+                          <div class="form-group">
+                            <label for="">第四天</label>&nbsp;&nbsp;
+                            <label for="">道具4</label>&nbsp;&nbsp;
+                            <label for="">金币</label>&nbsp;
+                            <input type="text" class="form-control" id="" placeholder="数量" ng-model="sign.gifts[3].coins">
+                          </div>&nbsp;&nbsp;&nbsp;
+                          <div class="form-group">
+                              <label for="">第五天</label>&nbsp;&nbsp;
+                              <label for="">道具5</label>&nbsp;&nbsp;
+                              <label for="">金币</label>&nbsp;
+                              <input type="text" class="form-control" id="" placeholder="数量" ng-model="sign.gifts[4].coins">
+                          </div>&nbsp;&nbsp;&nbsp;
+                          <div class="form-group">
+                              <label for="">第六天</label>&nbsp;&nbsp;
+                              <label for="">道具6</label>&nbsp;&nbsp;
+                              <label for="">金币</label>&nbsp;
+                              <input type="text" class="form-control" id="" placeholder="数量" ng-model="sign.gifts[5].coins">
+                          </div>&nbsp;&nbsp;&nbsp;
+                      </form>
+                      <form class="form-inline" style="margin-top:5px">
+                            <div class="form-group">
+                              <label for="">第七天</label>&nbsp;&nbsp;
+                              <label for="">道具7</label>&nbsp;&nbsp;
+                              <label for="">钻石</label>&nbsp;
+                              <input type="text" class="form-control" id="" placeholder="数量" ng-model="sign.gifts[6].gems">
+                            </div>
+                      </form>
+                      <button type="submit" class="btn btn-success" style="margin-top:5px" ng-click="setSignIn()">保存</button>
+                    <hr>
+                    <div style="margin-bottom:5px">
+                            <label for="">活动按钮开关</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="Checkbox7">开
+                            </label>
+                           
+                    </div>
+                    <label for="exampleInputName2">活动编辑</label>  
+                    <textarea class="form-control" rows="3" placeholder="请输入内容" style="resize:none"></textarea>
+                    <button type="submit" class="btn btn-success" style="margin-top:5px">发送</button>
+           </div>
+           </rd-widget-body>
+           <!-- <rd-widget-footer>
+             
+               <div class="clearfix"></div>
+           </rd-widget-footer> -->
+               <rd-widget>
+   </rd-widget></rd-widget></div>
+</div>

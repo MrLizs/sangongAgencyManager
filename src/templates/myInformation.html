@@ -1,0 +1,260 @@
+<style>
+    /*.widget{width: 900px;}
+       .medium{height:510px}*/
+
+    body {
+        background-color: rgba(0, 0, 0, .075);
+    }
+    .comom{color:#337ab7;font-size:15px;}
+    .rightCom{color:#333;}
+    .smalls{font-size:12px;color:#333;}
+</style>
+<div class="row">
+    <a href="#">{{formData.name}}</a>
+    <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+        <h3>我的信息</h3>
+        <hr/>
+        <h4>信息列表</h4>
+        <rd-widget>
+            <rd-widget-body class="medium no-padding">
+                <div class="table-responsive">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="comom">代理ID</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightCom">{{myInfo.agencyID}}</span></li>
+                        <li class="list-group-item" style="cursor:pointer;"><span class="comom">姓名电话</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightCom">{{myInfo.realname}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightCom">{{myInfo.contactway}}</span></li>
+                        <li class="list-group-item"><span class="comom">后台账号</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightCom">{{myInfo.userName}}</span></li>
+                        <li class="list-group-item" data-toggle="modal" data-target="#myModal2" style="cursor:pointer;"><span class="comom">后台密码<span class="smalls">(点击可修改)</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                        <li class="list-group-item"><span class="comom">账户余额</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rightCom">{{myInfo.accountbalance}}</span></li>
+                        <!-- <li class="list-group-item" data-toggle="modal" data-target="#myModal3" style="cursor:pointer;"><span class="comom">存取途径<span class="smalls">(点击可选择)</span></span></li> -->
+                        <li class="list-group-item"  data-toggle="modal" data-target="#myModal4" style="cursor:pointer;"><span class="comom">提现<span class="smalls">(点击可申请提现)</span></span></li>
+                        <li class="list-group-item"><span  class="comom">金币数量</span>&nbsp;&nbsp;<span>{{myInfo.coins}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  class="comom">钻石数量</span>&nbsp;&nbsp;<span>{{myInfo.gams}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comom">元宝数量</span>&nbsp;&nbsp;<span>{{myInfo.gamegold}}</span></li>
+                        
+                        <!-- <li class="list-group-item">
+                            <span class="comom">充值</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalzscz">钻石</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalybcz">元宝</button>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModaljbcz">金币</button>
+                        </li> -->
+
+                     </ul>
+                </div>
+            </rd-widget-body>
+            <!-- <rd-widget-footer>
+                 <div class="clearfix"></div>
+            </rd-widget-footer> -->
+        <rd-widget>
+    </div>
+</div>
+
+<!-- 更换电话号码模态框 -->
+<!-- <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">修改手机号码</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">新手机号</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入新手机号">
+                            </div>
+                    </div>
+                    <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">后台密码</label>
+                            <div class="col-sm-10">
+                            <input type="password" class="form-control" id="" placeholder="请输入后台密码">
+                            </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        </div>
+</div> -->
+
+<!-- 更换密码模态框 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">旧密码</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入旧密码" ng-model="formData.password">
+                            </div>
+                    </div>
+                    <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">新密码</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入新密码" ng-model="formData.newpassword">
+                            </div>
+                    </div>
+                    <!-- <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">新密码</label>
+                            <div class="col-sm-10">
+                            <input type="password" class="form-control" id="" placeholder="请再次输入新密码" ng-model="formData.newpassword">
+                            </div>
+                    </div> -->
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" ng-click="savePassword()">保存</button>
+            </div>
+          </div>
+        </div>
+</div>
+
+<!-- 绑定账号模态框 -->
+<!--  
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">绑定账号</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                   <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">支付方式</label>
+                        <div class="col-sm-10">
+                            <select class="form-control">
+                                <option>银行卡</option>
+                                <option>支付宝</option>
+                                <option>微信</option>
+                            </select>
+                        </div>
+                       
+                   </div>
+                   
+                   <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">账号</label>
+                        <div class="col-sm-10">
+                        <input type="password" class="form-control" id="" placeholder="请输入账号">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        </div>
+</div>
+-->
+
+<!-- 提现模态框 -->
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">申请提现</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">提现金额</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入提现金额" ng-model="formData.money" >
+                            </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" ng-click="withdraw()">提现</button>
+            </div>
+          </div>
+        </div>
+</div>
+
+<!-- 代理钻石充值模态框 -->
+<!-- <div class="modal fade" id="myModalzscz" tabindex="-1" role="dialog" aria-labelledby="myModalLabelzscz">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabelzscz" style="text-align:center;">充值</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">钻石充值</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入钻石数量">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        </div>
+</div> -->
+
+<!-- 代理元宝充值模态框-->
+<!-- <div class="modal fade" id="myModalybcz" tabindex="-1" role="dialog" aria-labelledby="myModalLabelybcz">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabelybcz" style="text-align:center;">充值</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">元宝充值</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入元宝数量">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        </div>
+</div> -->
+
+<!-- 代理金币充值模态框 -->
+<!-- <div class="modal fade" id="myModaljbcz" tabindex="-1" role="dialog" aria-labelledby="myModalLabeljbcz">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabeljbcz" style="text-align:center;">充值</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">金币充值</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="" placeholder="请输入金币数量">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        </div>
+</div> -->
